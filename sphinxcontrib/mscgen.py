@@ -146,7 +146,9 @@ def render_msc(self, code, format, prefix='mscgen'):
     # mscgen don't support encodings very well. ISO-8859-1 seems to work best,
     # at least for PNG.
     code = code.encode('iso-8859-1')
-
+    if format=='pdf':
+        format='eps'
+        
     mscgen_args = [self.builder.config.mscgen]
     mscgen_args.extend(self.builder.config.mscgen_args)
     mscgen_args.extend(['-T', format, '-o', tmpfn])
