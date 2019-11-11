@@ -132,7 +132,8 @@ def render_msc(self, code, format, prefix='mscgen'):
         # LaTeX
         relfn = fname
         outfn = path.join(self.builder.outdir, fname)
-        format = 'eps'
+        outfn = path.join(self.builder.outdir, '_images', fname)
+        format = 'pdf'
         tmpfn = outfn[:-3] + format
 
     if path.isfile(outfn):
@@ -204,7 +205,7 @@ def render_msc_latex(self, node, code, prefix='mscgen'):
         raise nodes.SkipNode
 
     if fname is not None:
-        self.body.append('\n\\includegraphics[]{%s}\n' % fname)
+        self.body.append('\n\\includegraphics[]{_images/%s}\n' % fname)
     raise nodes.SkipNode
 
 
